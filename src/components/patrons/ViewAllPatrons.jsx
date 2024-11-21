@@ -14,7 +14,6 @@ const ViewAllPatrons = ()  => {
     const fetchData = async () => {
       await fetchGlobalState();
       const {patrons, lateFees} = getGlobalState();
-      console.log("value of lateFees from globalState", lateFees);
       setLocalPatrons(patrons);
       setLateFeesForPatrons(lateFees);
     };
