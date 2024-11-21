@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Table } from "reactstrap";
-import { getMaterial } from "../../data/materialsData";
+import { getMaterials } from "../../data/materialsData";
 
 export default function MaterialDetails() {
   const { id } = useParams();
@@ -10,7 +10,7 @@ export default function MaterialDetails() {
 
   //add useEffect here to get the ticket details from the API
   useEffect(() => {
-    getMaterial(id).then(setMaterial);
+    getMaterials(id).then(setMaterial);
   }, []);
 
   if (!material) {

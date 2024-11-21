@@ -1,5 +1,6 @@
-const _apiUrl = "/api/genres";
-
-export const getGenres = () => {
-  return fetch(_apiUrl).then((res) => res.json());
+export const getGenres = async () => {
+  const response = await fetch("http://localhost:5167/api/genres");
+  const data = await response.json();
+  console.log("Genres Data:", data);
+  return data;
 };
