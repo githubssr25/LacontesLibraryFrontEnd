@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Table } from "reactstrap";
 import { getMaterials } from "../../data/materialsData";
+import { useLocation } from "react-router-dom";
 
 export default function MaterialDetails() {
   const { id } = useParams();
+  const location = useLocation();
 
   const [material, setMaterial] = useState(null);
 
   //add useEffect here to get the ticket details from the API
   useEffect(() => {
     getMaterials(id).then(setMaterial);
-  }, []);
+  }, [location]);
 
   if (!material) {
     return null;

@@ -8,6 +8,7 @@ import MaterialDetails from "./components/tickets/MaterialDetails";
 import CreateMaterial from "./components/tickets/CreateMaterial";
 import ViewAllPatrons from "./components/patrons/ViewAllPatrons";
 import EditPatronInfo from "./components/patrons/EditPatronInfo"
+import ViewCheckouts from "./components/checkouts/ViewCheckouts"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,6 +22,7 @@ root.render(
         </Route>
         <Route path="/allPatrons" element={<ViewAllPatrons />} />
         <Route path="/editPatrons" element={<EditPatronInfo />} />
+        <Route path="/viewCheckouts" element={<ViewCheckouts />}/>
       </Route>
     </Routes>
   </BrowserRouter>,

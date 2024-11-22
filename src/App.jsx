@@ -11,6 +11,9 @@ function App() {
           <NavItem>
             <NavLink href="/materials">Materials</NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink href="/viewCheckouts"> Checkouts </NavLink>
+          </NavItem>
         </Nav>
       </Navbar>
       <Outlet />

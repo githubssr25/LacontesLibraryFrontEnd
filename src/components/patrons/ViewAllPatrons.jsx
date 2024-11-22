@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { getGlobalState, fetchGlobalState } from "../../GlobalState";
 import { deactivatePatron } from "../../data/patronsData";
+import { useLocation } from "react-router-dom";
 
 const ViewAllPatrons = () => {
   const [localPatrons, setLocalPatrons] = useState([]);
   const [lateFeesForPatrons, setLateFeesForPatrons] = useState([]);
+
+  const location = useLocation();
 
   // Fetch patrons and late fees on component mount
   useEffect(() => {
@@ -16,7 +19,7 @@ const ViewAllPatrons = () => {
     };
 
     fetchData();
-  }, []);
+  }, [location]);
 
   // Handle deactivation of a patron
   const handleDeactivate = async (id) => {

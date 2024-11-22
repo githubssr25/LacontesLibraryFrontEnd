@@ -3,9 +3,11 @@ import { Table } from "reactstrap";
 import { removeMaterial } from "../../data/materialsData";
 import { Link } from "react-router-dom";
 import { getGlobalState, fetchGlobalState } from "../../GlobalState";
+import { useLocation } from "react-router-dom";
 
 export default function MaterialList() {
   const [circulatingMaterials, setCirculatingMaterials] = useState([]); // Only keep circulating materials state
+  const location = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,7 +17,7 @@ export default function MaterialList() {
     };
 
     fetchData();
-  }, []);
+  }, [location]);
 
   const handleRemove = async (materialId) => {
     const removedMaterial = await removeMaterial(materialId);
