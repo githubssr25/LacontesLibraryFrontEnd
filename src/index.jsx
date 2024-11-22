@@ -10,6 +10,7 @@ import ViewAllPatrons from "./components/patrons/ViewAllPatrons";
 import EditPatronInfo from "./components/patrons/EditPatronInfo"
 import ViewCheckouts from "./components/checkouts/ViewCheckouts"
 import BrowseCheckouts from "./components/checkouts/BrowseCheckouts"
+import CreateCheckout from "./components/checkouts/CreateCheckout"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,6 +26,7 @@ root.render(
         <Route path="/editPatrons" element={<EditPatronInfo />} />
         <Route path="/viewCheckouts" element={<ViewCheckouts />}/>
         <Route path="/browseCheckouts" element={<BrowseCheckouts />} />
+        <Route path="/createCheckout/:materialId" element={<CreateCheckout />} />
       </Route>
     </Routes>
   </BrowserRouter>,

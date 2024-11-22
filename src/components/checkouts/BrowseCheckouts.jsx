@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { updatePatron } from "../../data/patronsData"; // Assuming API methods are in `data/patronsData.js`
 import { fetchGlobalState, getGlobalState } from "../../GlobalState"; // Access global state functions
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const BrowseCheckouts = () => {
   const [availableMaterials, setAvailableMaterials] = useState([]); // State for materials in circulation
   const [allMaterials, setAllMaterials] = useState([]);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,6 +20,10 @@ const BrowseCheckouts = () => {
     fetchData();
   }, [location]); // Trigger on route change to ensure data is up to date
 
+  const handleCreateCheckout = (materialId) => {
+    navigate(`/createCheckout/${materialId}`);
+  }
+
   return (
     <div className="container">
       <h2>Available Materials</h2>
@@ -27,6 +32,7 @@ const BrowseCheckouts = () => {
       {availableMaterials.length > 0 ? (
         <ul>
           {availableMaterials.map((material) => (
+            <>
             <li key={material.materialId}>
               <strong>{material.materialName}</strong> - {material.genre || "No Genre"}
               <br />
@@ -34,6 +40,8 @@ const BrowseCheckouts = () => {
               <br />
               Checkout Days: {material.materialType?.checkoutDays || "N/A"}
             </li>
+            <button onClick= {() => handleCreateCheckout(material.materialId)}> Click Here To Checkout This Item</button>
+            </>
           ))}
         </ul>
       ) : (
