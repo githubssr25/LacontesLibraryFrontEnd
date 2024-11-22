@@ -11,6 +11,7 @@ import EditPatronInfo from "./components/patrons/EditPatronInfo"
 import ViewCheckouts from "./components/checkouts/ViewCheckouts"
 import BrowseCheckouts from "./components/checkouts/BrowseCheckouts"
 import CreateCheckout from "./components/checkouts/CreateCheckout"
+import OverdueCheckouts from "./components/checkouts/OverdueCheckouts"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -27,6 +28,7 @@ root.render(
         <Route path="/viewCheckouts" element={<ViewCheckouts />}/>
         <Route path="/browseCheckouts" element={<BrowseCheckouts />} />
         <Route path="/createCheckout/:materialId" element={<CreateCheckout />} />
+        <Route path="/overdueCheckouts" element={<OverdueCheckouts />} />
       </Route>
     </Routes>
   </BrowserRouter>,
