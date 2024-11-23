@@ -25,3 +25,11 @@ export const getPatronsWithMaterials = async () => {
     return data;
   };
   
+  export const reactivatePatron = async (id) => {
+    const response = await fetch(`http://localhost:5167/api/patrons/reactivate/${id}`, {
+      method: "PUT",
+    });
+    const data = await response.json();
+    console.log("Deactivated Patron Data:", data);
+    return data;
+  };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getGlobalState, fetchGlobalState } from "../../GlobalState";
-import { deactivatePatron } from "../../data/patronsData";
+import { deactivatePatron, reactivatePatron } from "../../data/patronsData";
 import { useLocation } from "react-router-dom";
 
 const ViewAllPatrons = () => {
@@ -37,6 +37,22 @@ const ViewAllPatrons = () => {
     }
   };
 
+  const handleReactivate = async (id) => {
+
+    try {
+      // Call the centralized API method
+      const updatedPatron = await reactivatePatron(id);
+      console.log("Deactivated Patron Data:", updatedPatron);
+
+      // Refresh the global state and update local state
+      await fetchGlobalState();
+      const { patrons } = getGlobalState();
+      setLocalPatrons(patrons);
+    } catch (error) {
+      console.error("Error deactivating patron:", error);
+    }
+  };
+
   return (
     <>
       <div>
@@ -49,10 +65,15 @@ const ViewAllPatrons = () => {
             <p>Email: {patron.patronDTO.email}</p>
             <p>Are they still active: {patron.patronDTO.isActive ? "yes" : "no"}</p>
             {/* Show "Deactivate" button only if patron is active */}
-            {patron.patronDTO.isActive && (
+            {patron.patronDTO.isActive ? (
               <button onClick={() => handleDeactivate(patron.patronId)}>
                 Deactivate
               </button>
+            ) : (
+            <button onClick={() => handleReactivate(patron.patronId)}>
+              Reactivate
+            </button>
+
             )}
           </div>
         ))}
